@@ -26,9 +26,8 @@ public class BowlingGameShould {
   void return_20_for_all_ones() {
     rollMany(1, 20);
     assertEquals(20, bowlingGame.score());
-  }
+   }
 
-  @Disabled
   @Test
   void return_sixteen_for_one_spare_and_one_three_roll() {
     bowlingGame.roll(5);
