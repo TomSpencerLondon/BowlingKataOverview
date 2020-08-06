@@ -39,13 +39,17 @@ public class BowlingGameShould {
 
   @Test
   void return_24_for_strike_and_3_4_in_next_frame() {
-    bowlingGame.roll(10); // strike
+    rollStrike();
     bowlingGame.roll(3);
     bowlingGame.roll(4);
 
     rollMany(16, 0);
 
     assertEquals(24, bowlingGame.score());
+  }
+
+  private void rollStrike() {
+    bowlingGame.roll(10);
   }
 
   private void rollSpare() {
