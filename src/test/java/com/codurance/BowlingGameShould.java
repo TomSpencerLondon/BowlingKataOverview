@@ -16,18 +16,20 @@ public class BowlingGameShould {
 
   @Test
   void return_0_for_gutter_game() {
-    for(int i = 0; i < 20; i++){
-      bowlingGame.roll(0);
-    }
+    rollMany(0, 20);
 
     assertEquals(0, bowlingGame.score());
   }
 
   @Test
   void return_20_for_all_ones() {
-    for(int i = 0; i < 20; i++){
-      bowlingGame.roll(1);
-    }
+    rollMany(1, 20);
     assertEquals(20, bowlingGame.score());
+  }
+
+  private void rollMany(int pins, int rolls) {
+    for (int i = 0; i < rolls; i++) {
+      bowlingGame.roll(pins);
+    }
   }
 }
