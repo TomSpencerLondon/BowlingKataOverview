@@ -3,7 +3,6 @@ package com.codurance;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class BowlingGameShould {
@@ -17,14 +16,14 @@ public class BowlingGameShould {
 
   @Test
   void return_0_for_gutter_game() {
-    rollMany(0, 20);
+    rollMany(20, 0);
 
     assertEquals(0, bowlingGame.score());
   }
 
   @Test
   void return_20_for_all_ones() {
-    rollMany(1, 20);
+    rollMany(20, 1);
     assertEquals(20, bowlingGame.score());
    }
 
@@ -33,9 +32,20 @@ public class BowlingGameShould {
     rollSpare();
     bowlingGame.roll(3);
 
-    rollMany(0, 17);
+    rollMany(17, 0);
 
     assertEquals(16, bowlingGame.score());
+  }
+
+  @Test
+  void return_24_for_strike_and_3_4_in_next_frame() {
+    bowlingGame.roll(10); // strike
+    bowlingGame.roll(3);
+    bowlingGame.roll(4);
+
+    rollMany(16, 0);
+
+    assertEquals(24, bowlingGame.score());
   }
 
   private void rollSpare() {
@@ -43,7 +53,7 @@ public class BowlingGameShould {
     bowlingGame.roll(5);
   }
 
-  private void rollMany(int pins, int rolls) {
+  private void rollMany(int rolls, int pins) {
     for (int i = 0; i < rolls; i++) {
       bowlingGame.roll(pins);
     }
