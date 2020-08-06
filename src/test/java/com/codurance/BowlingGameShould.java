@@ -16,4 +16,14 @@ public class BowlingGameShould {
 
     assertEquals(0, bowlingGame.score());
   }
+
+  @Test
+  void return_20_for_all_ones() {
+    BowlingGame bowlingGame = new BowlingGame();
+
+    for(int i = 0; i < 20; i++){
+      bowlingGame.roll(1);
+    }
+    assertEquals(20, bowlingGame.score());
+  }
 }
