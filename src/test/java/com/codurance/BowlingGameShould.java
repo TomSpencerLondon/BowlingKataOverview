@@ -48,6 +48,13 @@ public class BowlingGameShould {
     assertEquals(24, bowlingGame.score());
   }
 
+  @Test
+  void score_300_for_a_perfect_game() {
+    rollMany(12, 10);
+
+    assertEquals(300, bowlingGame.score());
+  }
+
   private void rollStrike() {
     bowlingGame.roll(10);
   }
