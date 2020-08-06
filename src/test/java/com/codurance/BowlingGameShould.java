@@ -2,14 +2,20 @@ package com.codurance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class BowlingGameShould {
 
+  private BowlingGame bowlingGame;
+
+  @BeforeEach
+  void setUp() {
+    bowlingGame = new BowlingGame();
+  }
+
   @Test
   void return_0_for_gutter_game() {
-    BowlingGame bowlingGame = new BowlingGame();
-
     for(int i = 0; i < 20; i++){
       bowlingGame.roll(0);
     }
@@ -19,8 +25,6 @@ public class BowlingGameShould {
 
   @Test
   void return_20_for_all_ones() {
-    BowlingGame bowlingGame = new BowlingGame();
-
     for(int i = 0; i < 20; i++){
       bowlingGame.roll(1);
     }
