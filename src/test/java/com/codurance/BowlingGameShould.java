@@ -30,13 +30,17 @@ public class BowlingGameShould {
 
   @Test
   void return_sixteen_for_one_spare_and_one_three_roll() {
-    bowlingGame.roll(5);
-    bowlingGame.roll(5); // spare
+    rollSpare();
     bowlingGame.roll(3);
 
     rollMany(0, 17);
 
     assertEquals(16, bowlingGame.score());
+  }
+
+  private void rollSpare() {
+    bowlingGame.roll(5);
+    bowlingGame.roll(5);
   }
 
   private void rollMany(int pins, int rolls) {
